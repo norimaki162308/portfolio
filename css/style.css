@@ -1,0 +1,209 @@
+/* :root と body は前回と同じ */
+:root {
+    --primary-color: #00ffff;
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg: #1e1e1e;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    /* 日本語フォントも追加して読みやすく */
+    font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    padding-top: 60px; /* ▼▼▼【追加】固定ヘッダー分の余白を確保 ▼▼▼ */
+    line-height: 1.6;
+}
+
+/* ▼▼▼【新規追加】ナビゲーションバー ▼▼▼ */
+.navbar {
+    background-color: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #333;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 60px;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+/* ▲▲▲ ナビゲーションバーここまで ▲▲▲ */
+
+/* container, h1, h2, hero は前回とほぼ同じ */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px; /* 上下のpaddingを調整 */
+    text-align: center;
+}
+/* セクションごとの背景設定などを調整 */
+#about, #skills, #contact, #client-works {
+    background-color: var(--container-bg);
+    margin: 20px auto;
+    border-radius: 8px;
+    padding: 60px 40px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+.hero {
+    height: calc(80vh - 60px); /* ナビゲーションバーの高さを引く */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('path/to/hero-background.jpg') no-repeat center center/cover;
+}
+.hero h1 { font-size: 4rem; margin: 0; letter-spacing: 3px; }
+.hero p { font-size: 1.2rem; color: var(--primary-color); }
+
+/* ポートフォリオグリッド (前回と同じ) */
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.portfolio-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 8px; background-color: #000; }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.portfolio-item:hover img { transform: scale(1.1); opacity: 0.3; }
+.portfolio-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; text-align: center; padding: 20px; }
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+.portfolio-overlay h3 { margin: 0; font-size: 1.5rem; }
+.portfolio-overlay p { margin-top: 5px; font-size: 0.9rem; }
+
+
+/* ▼▼▼【新規追加】CLIENT WORKSセクションのスタイル ▼▼▼ */
+.section-description {
+    max-width: 600px;
+    margin: -20px auto 40px;
+    color: #bbb;
+}
+
+.client-works-grid {
+    display: grid;
+    gap: 40px;
+    text-align: left;
+}
+
+.client-item {
+    display: flex;
+    gap: 30px;
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.client-logo-wrapper {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    background-color: #fff; /* ロゴが見やすいように背景を白に */
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.client-logo-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.client-info h3 {
+    margin: 0 0 5px 0;
+    color: var(--primary-color);
+}
+
+.client-info h4 {
+    margin: 0 0 15px 0;
+    font-weight: 400;
+    color: #ccc;
+    font-style: italic;
+}
+
+.client-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+/* ▲▲▲ CLIENT WORKSセクションここまで ▲▲▲ */
+
+
+/* ABOUTセクション (前回と同じ) */
+.about-content { display: flex; align-items: center; gap: 30px; text-align: left; }
+.profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); }
+
+/* SKILLSセクション（旧SERVICES） */
+.skill-list { /* class名を変更 */
+    list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;
+}
+.skill-list li { /* class名を変更 */
+    background-color: #333; padding: 10px 20px; border-radius: 20px; transition: background-color 0.3s;
+}
+.skill-list li:hover { background-color: var(--primary-color); color: #000; }
+
+/* CONTACT, FOOTER, MODAL (前回と同じ) */
+.contact-button { display: inline-block; background-color: var(--primary-color); color: #000; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; transition: transform 0.3s ease; }
+.contact-button:hover { transform: scale(1.05); }
+footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #888; }
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
+.modal-content { position: relative; width: 80%; max-width: 960px; }
+.modal-content iframe { width: 100%; aspect-ratio: 16 / 9; }
+.close-button { position: absolute; top: -40px; right: 0; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+
+/* レスポンシブ対応の調整 */
+@media (max-width: 768px) {
+    body { padding-top: 100px; } /* メニューが2段になる可能性を考慮 */
+    .navbar { flex-direction: column; height: auto; padding: 10px 5%; }
+    .nav-menu { gap: 15px; margin-top: 10px; flex-wrap: wrap; justify-content: center;}
+    .hero { height: calc(70vh - 100px); }
+    .hero h1 { font-size: 2.5rem; }
+    .about-content { flex-direction: column; }
+    .client-item { flex-direction: column; align-items: flex-start; } /* スマホではロゴと説明を縦並びに */
+}
